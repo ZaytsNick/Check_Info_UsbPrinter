@@ -1,0 +1,9 @@
+/.vs/*
+/cmake-build-debug/*
+/out/*
+/.idea/*
+/.idea
+/build
+.vscode/*
+trash*
+.cache*
