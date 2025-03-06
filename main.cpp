@@ -1,6 +1,7 @@
 #include <iostream>
 // #include <usb.h>
-#include <libusb-1.0/libusb.h>
+#include <libusb.h>
+// #include <libusb-1.0/libusb.h>
 
 // Функция для опроса состояния тонера
 bool checkTonerStatus(libusb_device_handle* printerHandle) {
