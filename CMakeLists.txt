@@ -8,13 +8,19 @@ set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
 # Указываем стандарт C++ (например, C++17)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-# Укажите путь к заголовочным файлам libusb
-include_directories("C:/libusb/include/")
 
-# Укажите путь к библиотекам libusb
-link_directories("C:/libusb/MinGW64/static")
-
+set(LIBUSB_LIB_DIR "C:/libusb/MinGW64/static")
+set(LIBUSB_INCLUDE_DIR "C:/libusb/include/")
 
 add_executable(Check_Info_UsbPrinter main.cpp)
 
-target_link_libraries(Check_Info_UsbPrinter  libusb-1.0)
+
+# Добавьте директорию с заголовочными файлами
+target_include_directories(Check_Info_UsbPrinter PRIVATE ${LIBUSB_INCLUDE_DIR})
+
+# Подключите библиотеку
+target_link_libraries(Check_Info_UsbPrinter ${LIBUSB_LIB_DIR}/libusb-1.0.a)
+
+set_target_properties(Check_Info_UsbPrinter PROPERTIES
+    LINK_FLAGS "-static"
+)
